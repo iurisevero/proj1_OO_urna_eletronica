@@ -82,6 +82,9 @@ int Candidato :: get_codigo_do_cargo(){
 int Candidato :: get_numero_do_candidato(){
 	return numero_do_candidato;
 }
+string Candidato :: get_nome_do_candidato(){
+	return nome_do_candidato;
+}
 string Candidato :: get_apelido_do_candidato(){
 	return apelido_do_candidato;
 }

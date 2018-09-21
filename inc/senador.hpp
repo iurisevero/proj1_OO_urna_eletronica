@@ -14,7 +14,7 @@ private:
 
 public:
 	Senador();
-	Senador(string nome_ue, int codigo_do_cargo, int numero_do_candidato, int numero_do_partido);
+	Senador(int codigo_do_cargo, int numero_do_candidato, int numero_do_partido);
 	Senador(string nome_ue, int codigo_do_cargo, string descricao_do_cargo, int numero_do_candidato, string nome_do_candidato, string apelido_do_candidato,
 	int numero_do_partido, string sigla_do_partido, string nome_do_partido);
 

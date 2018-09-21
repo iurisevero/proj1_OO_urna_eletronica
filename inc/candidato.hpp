@@ -39,6 +39,7 @@ public:
 	string get_nome_ue();
 	int get_codigo_do_cargo();
 	int get_numero_do_candidato();
+	string get_nome_do_candidato();
 	string get_apelido_do_candidato();
 	int get_numero_do_partido();
 	string get_sigla_do_partido();

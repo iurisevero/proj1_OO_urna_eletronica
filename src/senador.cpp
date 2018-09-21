@@ -15,7 +15,7 @@ Senador :: Senador(){
 	set_nome_do_partido("");
 }
 
-Senador :: Senador(string nome_ue, int codigo_do_cargo, int numero_do_candidato, int numero_do_partido){
+Senador :: Senador(int codigo_do_cargo, int numero_do_candidato, int numero_do_partido){
 	set_nome_ue("");
 	set_codigo_do_cargo(codigo_do_cargo);
 	set_numero_do_candidato(numero_do_candidato);
