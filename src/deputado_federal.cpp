@@ -42,7 +42,7 @@ Deputado_Federal :: Deputado_Federal(string nome_ue, int codigo_do_cargo, string
 Deputado_Federal :: ~Deputado_Federal(){}
 
 void Deputado_Federal :: imprime_dados(){
-	cout << "Deputado Federal: " << get_apelido_do_candidato() << endl;
+	cout << "Deputado Federal: " << get_apelido_do_candidato() << " - " << get_nome_ue() << endl;
 	cout << "Numero do Deputado Federal: " << get_numero_do_candidato() << endl;
 	cout << "Partido do Deputado Federal: " << get_sigla_do_partido() << " " << get_numero_do_partido() << endl;
 	cout << get_nome_do_partido() << endl;

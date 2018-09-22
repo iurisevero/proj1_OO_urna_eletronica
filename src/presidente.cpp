@@ -76,7 +76,7 @@ string Presidente :: get_nome_do_partido_do_vice(){
 }
 
 void Presidente :: imprime_dados(){
-	cout << "Presidente: " << get_apelido_do_candidato() << endl;
+	cout << "Presidente: " << get_apelido_do_candidato() << " - " << get_nome_ue() << endl;
 	cout << "Numero do Presidente: " << get_numero_do_candidato() << endl;
 	cout << "Partido do Presidente: " << get_sigla_do_partido() << " " << get_numero_do_partido() << endl;
 	cout << get_nome_do_partido() << endl;

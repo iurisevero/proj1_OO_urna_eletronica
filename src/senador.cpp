@@ -70,7 +70,8 @@ string Senador :: get_apelido_do_suplente_2(){
 }
 
 void Senador :: imprime_dados(){
-	cout << "Senador: " << get_apelido_do_candidato() << endl;
+
+	cout << "Senador: " << get_apelido_do_candidato() << " - " << get_nome_ue() << endl;
 	cout << "Numero do Senador: " << get_numero_do_candidato() << endl;
 	cout << "Partido do Senador: " << get_sigla_do_partido() << " " << get_numero_do_partido() << endl;
 	cout << get_nome_do_partido() << endl;

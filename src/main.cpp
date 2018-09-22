@@ -21,26 +21,134 @@ vector<Eleitor> eleitores;
 void organizador_de_candidato(Candidato candidato_atual);
 void organizador_de_sub_candidato(Candidato candidato_atual);
 void imprime_dados_do_eleitor(Eleitor eleitor);
+void limpa_buffer();
 int localizador_de_candidato(int numero_do_candidato, int codigo_do_cargo);
 int voto_deputado_distrital(); 
 int voto_deputado_federal(); 
 int voto_senador(int senador, int posicao_senador_1); 
-int voto_governador(); 
+int voto_governador();
 int voto_presidente(); 
 
 int main(){
+	vector<Candidato> teste_candidatos;
+	Candidato candidato1;
+	candidato1.set_nome_ue("DF");
+	candidato1.set_codigo_do_cargo(1);
+	candidato1.set_descricao_do_cargo("Presidente");
+	candidato1.set_numero_do_candidato(11);
+	candidato1.set_nome_do_candidato("AAA");
+	candidato1.set_apelido_do_candidato("A");
+	candidato1.set_numero_do_partido(11);
+	candidato1.set_sigla_do_partido("AA");
+	candidato1.set_nome_do_partido("A A");
+	teste_candidatos.push_back(candidato1);
+	Candidato candidato2;
+	candidato2.set_nome_ue("DF");
+	candidato2.set_codigo_do_cargo(2);
+	candidato2.set_descricao_do_cargo("Vice Presidente");
+	candidato2.set_numero_do_candidato(11);
+	candidato2.set_nome_do_candidato("aaa");
+	candidato2.set_apelido_do_candidato("a");
+	candidato2.set_numero_do_partido(11);
+	candidato2.set_sigla_do_partido("AA");
+	candidato2.set_nome_do_partido("A A");
+	teste_candidatos.push_back(candidato2);
+	Candidato candidato3;
+	candidato3.set_nome_ue("DF");
+	candidato3.set_codigo_do_cargo(3);
+	candidato3.set_descricao_do_cargo("Governo");
+	candidato3.set_numero_do_candidato(11);
+	candidato3.set_nome_do_candidato("BBB");
+	candidato3.set_apelido_do_candidato("B");
+	candidato3.set_numero_do_partido(11);
+	candidato3.set_sigla_do_partido("BB");
+	candidato3.set_nome_do_partido("B B");
+	teste_candidatos.push_back(candidato3);
+	Candidato candidato4;
+	candidato4.set_nome_ue("DF");
+	candidato4.set_codigo_do_cargo(4);
+	candidato4.set_descricao_do_cargo("Governo");
+	candidato4.set_numero_do_candidato(11);
+	candidato4.set_nome_do_candidato("bbb");
+	candidato4.set_apelido_do_candidato("b");
+	candidato4.set_numero_do_partido(11);
+	candidato4.set_sigla_do_partido("BB");
+	candidato4.set_nome_do_partido("B B");
+	teste_candidatos.push_back(candidato4);
+	Candidato candidato5;
+	candidato5.set_nome_ue("DF");
+	candidato5.set_codigo_do_cargo(5);
+	candidato5.set_descricao_do_cargo("Senador");
+	candidato5.set_numero_do_candidato(111);
+	candidato5.set_nome_do_candidato("CCC");
+	candidato5.set_apelido_do_candidato("C");
+	candidato5.set_numero_do_partido(11);
+	candidato5.set_sigla_do_partido("CC");
+	candidato5.set_nome_do_partido("C C");
+	teste_candidatos.push_back(candidato5);
+	Candidato candidato6;
+	candidato6.set_nome_ue("DF");
+	candidato6.set_codigo_do_cargo(6);
+	candidato6.set_descricao_do_cargo("Deputado");
+	candidato6.set_numero_do_candidato(1111);
+	candidato6.set_nome_do_candidato("DDD");
+	candidato6.set_apelido_do_candidato("D");
+	candidato6.set_numero_do_partido(11);
+	candidato6.set_sigla_do_partido("DD");
+	candidato6.set_nome_do_partido("D D");
+	teste_candidatos.push_back(candidato6);
+	Candidato candidato7;
+	candidato7.set_nome_ue("DF");
+	candidato7.set_codigo_do_cargo(8);
+	candidato7.set_descricao_do_cargo("Deputado dist");
+	candidato7.set_numero_do_candidato(11111);
+	candidato7.set_nome_do_candidato("EEE");
+	candidato7.set_apelido_do_candidato("E");
+	candidato7.set_numero_do_partido(11);
+	candidato7.set_sigla_do_partido("EE");
+	candidato7.set_nome_do_partido("E E");
+	teste_candidatos.push_back(candidato7);
+	Candidato candidato8;
+	candidato8.set_nome_ue("DF");
+	candidato8.set_codigo_do_cargo(9);
+	candidato8.set_descricao_do_cargo("sup1");
+	candidato8.set_numero_do_candidato(111);
+	candidato8.set_nome_do_candidato("FFF");
+	candidato8.set_apelido_do_candidato("F");
+	candidato8.set_numero_do_partido(11);
+	candidato8.set_sigla_do_partido("FF");
+	candidato8.set_nome_do_partido("F F");
+	teste_candidatos.push_back(candidato8);
+	Candidato candidato9;
+	candidato9.set_nome_ue("DF");
+	candidato9.set_codigo_do_cargo(10);
+	candidato9.set_descricao_do_cargo("SUP2");
+	candidato9.set_numero_do_candidato(111);
+	candidato9.set_nome_do_candidato("GGG");
+	candidato9.set_apelido_do_candidato("G");
+	candidato9.set_numero_do_partido(11);
+	candidato9.set_sigla_do_partido("GG");
+	candidato9.set_nome_do_partido("G G");
+	teste_candidatos.push_back(candidato9);
+
+	for(int i=0; i<teste_candidatos.size(); ++i)
+		organizador_de_candidato(teste_candidatos[i]);
+	for(int i=0; i<candidatos.size(); ++i)
+		organizador_de_sub_candidato(candidatos[i]);
+
 	int N, retorno;
 	while(1){
 		cout << "Insira o número de eleitores: ";
-		retorno = scanf("%d", &N);
+		retorno = scanf(" %d", &N);
 		if(retorno){
 			break;
 		}
 		else{
 			cout << "Valor inválido\n";
+			limpa_buffer();
 		}
 	}
-
+	limpa_buffer();
 	for(int i=0; i<N; ++i){
 		cout << "Insira seu nome: ";
 		string nome;
@@ -158,6 +266,13 @@ void imprime_dados_do_eleitor(Eleitor eleitor){
 	cout << endl;
 }
 
+void limpa_buffer(){
+	char lixo;
+	do{
+		scanf("%c", &lixo);
+	}while(lixo!='\n');
+}
+
 int localizador_de_candidato(int numero_do_candidato, int codigo_do_cargo){
 	switch(codigo_do_cargo){
 		case 1:
@@ -242,7 +357,7 @@ int voto_deputado_distrital(){
 				else{
 					voto_valido = true;
 				}
-
+				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
 					deputado_distrital[voto].imprime_dados();
@@ -253,10 +368,11 @@ int voto_deputado_distrital(){
 						if(retorno){
 							if(confirmacao == 1){
 								cout << "Voto confirmado.\n";
+								voto_confirmado = true;
 								break;
 							}
 							else if(confirmacao == 2){
-								continue;		
+								break;		
 							}
 							else{
 								cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
@@ -265,7 +381,9 @@ int voto_deputado_distrital(){
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
 						}
-					}						
+					}	
+
+					if(voto_confirmado) break;					
 				}
 			}
 			else{
@@ -338,10 +456,10 @@ int voto_deputado_federal(){
 				else{
 					voto_valido = true;
 				}
-
+				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-					deputado_distrital[voto].imprime_dados();
+					deputado_federal[voto].imprime_dados();
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -349,10 +467,11 @@ int voto_deputado_federal(){
 						if(retorno){
 							if(confirmacao == 1){
 								cout << "Voto confirmado.\n";
+								voto_confirmado = true;
 								break;
 							}
 							else if(confirmacao == 2){
-								continue;		
+								break;		
 							}
 							else{
 								cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
@@ -361,7 +480,8 @@ int voto_deputado_federal(){
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
 						}
-					}						
+					}
+					if(voto_confirmado) break;						
 				}
 			}
 			else{
@@ -434,7 +554,7 @@ int voto_senador(int senador, int posicao_senador_1){
 				else{
 					voto_valido = true;
 				}
-
+				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
 					deputado_distrital[voto].imprime_dados();
@@ -445,10 +565,11 @@ int voto_senador(int senador, int posicao_senador_1){
 						if(retorno){
 							if(confirmacao == 1){
 								cout << "Voto confirmado.\n";
+								voto_confirmado = true;
 								break;
 							}
 							else if(confirmacao == 2){
-								continue;		
+								break;		
 							}
 							else{
 								cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
@@ -457,7 +578,8 @@ int voto_senador(int senador, int posicao_senador_1){
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
 						}
-					}						
+					}
+					if(voto_confirmado) break;						
 				}
 			}
 			else{
@@ -530,7 +652,7 @@ int voto_governador(){
 				else{
 					voto_valido = true;
 				}
-
+				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
 					deputado_distrital[voto].imprime_dados();
@@ -541,10 +663,11 @@ int voto_governador(){
 						if(retorno){
 							if(confirmacao == 1){
 								cout << "Voto confirmado.\n";
+								voto_confirmado = true;
 								break;
 							}
 							else if(confirmacao == 2){
-								continue;		
+								break;		
 							}
 							else{
 								cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
@@ -553,7 +676,8 @@ int voto_governador(){
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
 						}
-					}						
+					}
+					if(voto_confirmado) break;						
 				}
 			}
 			else{
@@ -626,9 +750,10 @@ int voto_presidente(){
 				else{
 					voto_valido = true;
 				}
-
+				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
+			
 					deputado_distrital[voto].imprime_dados();
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
@@ -637,10 +762,11 @@ int voto_presidente(){
 						if(retorno){
 							if(confirmacao == 1){
 								cout << "Voto confirmado.\n";
+								voto_confirmado = true;
 								break;
 							}
 							else if(confirmacao == 2){
-								continue;		
+								break;		
 							}
 							else{
 								cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
@@ -649,7 +775,8 @@ int voto_presidente(){
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
 						}
-					}						
+					}
+					if(voto_confirmado) break;						
 				}
 			}
 			else{
