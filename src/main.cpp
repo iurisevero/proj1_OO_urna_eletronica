@@ -150,7 +150,7 @@ int main(){
 	}
 	limpa_buffer();
 	for(int i=0; i<N; ++i){
-		cout << "Insira seu nome: ";
+		cout << "\nInsira seu nome: ";
 		string nome;
 		getline(cin, nome);
 		int deputado_federal = voto_deputado_federal();
@@ -161,6 +161,7 @@ int main(){
 		int presidente = voto_presidente();
 		Eleitor eleitor_atual = Eleitor(nome, presidente, governador, senador_1, senador_2, deputado_federal, deputado_distrital);
 		eleitores.push_back(eleitor_atual);
+		limpa_buffer();
 	}
 
 	for(int i=0; i<N; ++i){
@@ -257,12 +258,78 @@ void organizador_de_sub_candidato(Candidato candidato_atual){
 
 void imprime_dados_do_eleitor(Eleitor eleitor){
 	cout << "Eleitor: " << eleitor.get_nome_do_eleitor() << endl;
-	cout << "	Presidente: " << presidente[eleitor.get_presidente()].get_nome_do_candidato() << endl;
-	cout << "	Governador: " << governador[eleitor.get_governador()].get_nome_do_candidato() << endl;
-	cout << "	Senador: " << senador[eleitor.get_senador_1()].get_nome_do_candidato() << endl;
-	cout << "	Senador: " << senador[eleitor.get_senador_2()].get_nome_do_candidato() << endl;
-	cout << "	Deputado Federal: " << deputado_federal[eleitor.get_deputado_federal()].get_nome_do_candidato() << endl;
-	cout << "	Deputado Distrital: " << deputado_distrital[eleitor.get_deputado_distrital()].get_nome_do_candidato() << endl;
+	cout << "	Presidente: ";
+	switch(eleitor.get_presidente()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << presidente[eleitor.get_presidente()].get_nome_do_candidato() << endl;
+			break;
+	}
+	cout << "	Governador: ";
+	switch(eleitor.get_governador()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << governador[eleitor.get_governador()].get_nome_do_candidato() << endl;
+			break;
+	}
+	cout << "	Senador 1: ";
+	switch(eleitor.get_senador_1()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << senador[eleitor.get_senador_1()].get_nome_do_candidato() << endl;
+			break;
+	}
+	cout << "	Senador 2 ";
+	switch(eleitor.get_senador_2()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << senador[eleitor.get_senador_2()].get_nome_do_candidato() << endl;
+			break;
+	}
+	cout << "	Deputado Federal: ";
+	switch(eleitor.get_deputado_federal()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << deputado_federal[eleitor.get_deputado_federal()].get_nome_do_candidato() << endl;
+			break;
+	}
+	cout << "	Deputado Distrital: ";
+	switch(eleitor.get_deputado_distrital()){
+		case -1:
+			cout << "Nulo\n";
+			break;
+		case -2:
+			cout << "Branco\n";
+			break;
+		default:
+			cout << deputado_distrital[eleitor.get_deputado_distrital()].get_nome_do_candidato() << endl;
+			break;
+	}
 	cout << endl;
 }
 
@@ -299,7 +366,7 @@ int localizador_de_candidato(int numero_do_candidato, int codigo_do_cargo){
 int voto_deputado_distrital(){
 	int voto;
 	bool voto_valido = false;
-	cout << "DEPUTADO DISTRITAL:\n\n";
+	cout << "\nDEPUTADO DISTRITAL:\n";
 
 	cout << "Deseja votar em branco?\n1)Sim\n2)Não\nDigite sua opção: ";
 	while(1){
@@ -317,6 +384,7 @@ int voto_deputado_distrital(){
 			}
 			else{
 				cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+				void limpa_buffer();
 			}
 		}
 		else{
@@ -351,6 +419,7 @@ int voto_deputado_distrital(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							void limpa_buffer();
 						}
 					}		
 				}
@@ -360,7 +429,12 @@ int voto_deputado_distrital(){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-					deputado_distrital[voto].imprime_dados();
+					if(voto >= 0){
+						deputado_distrital[voto].imprime_dados();
+					}
+					else{
+						cout << "Voto nulo\n";
+					}
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -388,6 +462,7 @@ int voto_deputado_distrital(){
 			}
 			else{
 				cout << "Código inválido.\nO código deve conter 5 caracteres numéricos, com valores entre 1 e 9.\n";
+				void limpa_buffer();
 			}
 		}
 	}
@@ -398,7 +473,7 @@ int voto_deputado_distrital(){
 int voto_deputado_federal(){
 	int voto;
 	bool voto_valido = false;
-	cout << "DEPUTADO FEDERAL:\n\n";
+	cout << "\nDEPUTADO FEDERAL:\n";
 
 	cout << "Deseja votar em branco?\n1)Sim\n2)Não\nDigite sua opção: ";
 	while(1){
@@ -420,6 +495,7 @@ int voto_deputado_federal(){
 		}
 		else{
 			cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+			void limpa_buffer();
 		}
 	}
 
@@ -450,6 +526,7 @@ int voto_deputado_federal(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							void limpa_buffer();
 						}
 					}		
 				}
@@ -459,7 +536,12 @@ int voto_deputado_federal(){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-					deputado_federal[voto].imprime_dados();
+					if(voto >= 0){
+						deputado_federal[voto].imprime_dados();
+					}
+					else{
+						cout << "Voto nulo\n";
+					}
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -479,6 +561,7 @@ int voto_deputado_federal(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							void limpa_buffer();
 						}
 					}
 					if(voto_confirmado) break;						
@@ -486,6 +569,7 @@ int voto_deputado_federal(){
 			}
 			else{
 				cout << "Código inválido.\nO código deve conter 4 caracteres numéricos, com valores entre 1 e 9.\n";
+				void limpa_buffer();
 			}
 		}
 	}
@@ -493,10 +577,10 @@ int voto_deputado_federal(){
 	return voto;
 }
 
-int voto_senador(int senador, int posicao_senador_1){
+int voto_senador(int senador_votado, int posicao_senador_1){
 	int voto;
 	bool voto_valido = false;
-	printf("SENADOR - %dº vaga:\n\n", senador);
+	printf("\nSENADOR - %dº vaga:\n", senador_votado);
 
 	cout << "Deseja votar em branco?\n1)Sim\n2)Não\nDigite sua opção: ";
 	while(1){
@@ -518,6 +602,7 @@ int voto_senador(int senador, int posicao_senador_1){
 		}
 		else{
 			cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+			limpa_buffer();
 		}
 	}
 
@@ -528,7 +613,7 @@ int voto_senador(int senador, int posicao_senador_1){
 			retorno = scanf("%d", &numero_do_candidato);
 			if(retorno&&numero_do_candidato<1000&&numero_do_candidato>99){
 				int posicao = localizador_de_candidato(numero_do_candidato, 5);
-				if(posicao==-1||(posicao==posicao_senador_1&&senador==2)){
+				if(posicao==-1||(posicao==posicao_senador_1&&senador_votado==2)){
 					cout << "Candidato não encontrado/Candidato já selecionado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int voto_nulo;
@@ -548,6 +633,7 @@ int voto_senador(int senador, int posicao_senador_1){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}		
 				}
@@ -557,7 +643,12 @@ int voto_senador(int senador, int posicao_senador_1){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-					deputado_distrital[voto].imprime_dados();
+					if(voto >= 0){
+						senador[voto].imprime_dados();
+					}
+					else{
+						cout << "Voto nulo\n";
+					}
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -577,6 +668,7 @@ int voto_senador(int senador, int posicao_senador_1){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}
 					if(voto_confirmado) break;						
@@ -584,6 +676,7 @@ int voto_senador(int senador, int posicao_senador_1){
 			}
 			else{
 				cout << "Código inválido.\nO código deve conter 3 caracteres numéricos, com valores entre 1 e 9.\n";
+				limpa_buffer();
 			}
 		}
 	}
@@ -594,7 +687,7 @@ int voto_senador(int senador, int posicao_senador_1){
 int voto_governador(){
 	int voto;
 	bool voto_valido = false;
-	cout << "GOVERNADOR:\n\n";
+	cout << "\nGOVERNADOR:\n";
 
 	cout << "Deseja votar em branco?\n1)Sim\n2)Não\nDigite sua opção: ";
 	while(1){
@@ -616,6 +709,7 @@ int voto_governador(){
 		}
 		else{
 			cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+			limpa_buffer();
 		}
 	}
 
@@ -646,6 +740,7 @@ int voto_governador(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}		
 				}
@@ -655,7 +750,12 @@ int voto_governador(){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-					deputado_distrital[voto].imprime_dados();
+					if(voto >= 0){
+						governador[voto].imprime_dados();
+					}
+					else{
+						cout << "Voto nulo\n";
+					}
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -675,6 +775,7 @@ int voto_governador(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}
 					if(voto_confirmado) break;						
@@ -682,6 +783,7 @@ int voto_governador(){
 			}
 			else{
 				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n";
+				limpa_buffer();
 			}
 		}
 	}
@@ -692,7 +794,7 @@ int voto_governador(){
 int voto_presidente(){
 	int voto;
 	bool voto_valido = false;
-	cout << "PRESIDENTE:\n\n";
+	cout << "\nPRESIDENTE:\n";
 
 	cout << "Deseja votar em branco?\n1)Sim\n2)Não\nDigite sua opção: ";
 	while(1){
@@ -714,6 +816,7 @@ int voto_presidente(){
 		}
 		else{
 			cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+			limpa_buffer();
 		}
 	}
 
@@ -744,6 +847,7 @@ int voto_presidente(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}		
 				}
@@ -753,8 +857,12 @@ int voto_presidente(){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					voto = posicao;
-			
-					deputado_distrital[voto].imprime_dados();
+					if(voto >= 0){
+						presidente[voto].imprime_dados();
+					}
+					else{
+						cout << "Voto nulo\n";
+					}
 					cout << "Deseja confirmar o voto?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int confirmacao;
@@ -774,6 +882,7 @@ int voto_presidente(){
 						}
 						else{
 							cout << "Valor inválido, digite novamente!\n1)Sim\n2)Não\nDigite sua opção: ";
+							limpa_buffer();
 						}
 					}
 					if(voto_confirmado) break;						
@@ -781,6 +890,7 @@ int voto_presidente(){
 			}
 			else{
 				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n";
+				limpa_buffer();
 			}
 		}
 	}
