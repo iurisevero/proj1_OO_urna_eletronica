@@ -76,7 +76,7 @@ int binary_search_governador(int size, int numero_do_candidato, vector<Governado
 int binary_search_senador(int size, int numero_do_candidato, vector<Senador> candidatos){
 	int left = 0, right = size;
 	bool candidato_encontrado = false;
-	for(int i=0; i<500; ++i){
+	for(int i=0; i<1000; ++i){
 		int medium = left + (right-left)/2;
 		if(candidatos[medium].get_numero_do_candidato() == numero_do_candidato){
 			candidato_encontrado = true;

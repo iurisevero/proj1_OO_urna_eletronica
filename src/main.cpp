@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<Candidato> candidatos;
+vector<Candidato> sub_candidatos;
 vector<Presidente> presidente;
 vector<Governador> governador;
 vector<Senador> senador;
@@ -28,9 +28,10 @@ int voto_deputado_federal();
 int voto_senador(int senador, int posicao_senador_1); 
 int voto_governador();
 int voto_presidente(); 
+vector<Candidato> leitor_de_arquivo();
 
 int main(){
-	vector<Candidato> teste_candidatos;
+	/*vector<Candidato> teste_candidatos;
 	Candidato candidato1;
 	candidato1.set_nome_ue("DF");
 	candidato1.set_codigo_do_cargo(1);
@@ -130,11 +131,41 @@ int main(){
 	candidato9.set_sigla_do_partido("GG");
 	candidato9.set_nome_do_partido("G G");
 	teste_candidatos.push_back(candidato9);
+*/
+	vector<Candidato> candidatos;
+	candidatos = leitor_de_arquivo();
 
-	for(int i=0; i<teste_candidatos.size(); ++i)
-		organizador_de_candidato(teste_candidatos[i]);
-	for(int i=0; i<candidatos.size(); ++i)
-		organizador_de_sub_candidato(candidatos[i]);
+	for(auto p: candidatos){
+		if(p.get_numero_do_candidato()==450){
+			cout << p.get_nome_do_candidato() << " " << p.get_apelido_do_candidato() << " " << p.get_numero_do_candidato();
+			cout << " " << p.get_numero_do_partido() << " " << p.get_nome_do_partido() << " " << p.get_sigla_do_partido() << endl;
+			cout << p.get_codigo_do_cargo() << endl;
+		}
+	}
+
+	for(auto p: candidatos){
+		organizador_de_candidato(p);
+	}
+/*
+	for(auto p: senador){
+		if(p.get_numero_do_candidato()==450){
+			cout << p.get_nome_do_candidato() << " " << p.get_apelido_do_candidato() << " " << p.get_numero_do_candidato();
+			cout << " " << p.get_numero_do_partido() << " " << p.get_nome_do_partido() << " " << p.get_sigla_do_partido() << endl;
+			cout << p.get_codigo_do_cargo() << endl;
+		}
+	}
+	cout << localizador_de_candidato(450, 5);*/
+	/*
+	for(auto p: sub_candidatos){
+		cout << p.get_nome_do_candidato() << " " << p.get_apelido_do_candidato() << " " << p.get_numero_do_candidato();
+		cout << " " << p.get_numero_do_partido() << " " << p.get_nome_do_partido() << " " << p.get_sigla_do_partido() << endl;
+		cout << p.get_codigo_do_cargo() << endl;
+	}
+*/
+	for(auto p: sub_candidatos){
+		organizador_de_sub_candidato(p);
+		//cout << "aqui2\n";
+	}
 
 	int N, retorno;
 	while(1){
@@ -177,7 +208,7 @@ void organizador_de_candidato(Candidato candidato_atual){
 			break;
 		}
 		case 2:
-			candidatos.push_back(candidato_atual);
+			sub_candidatos.push_back(candidato_atual);
 			break;
 		case 3:{
 			Governador governador_atual = Governador(candidato_atual.get_nome_ue(), candidato_atual.get_codigo_do_cargo(), "Governador", candidato_atual.get_numero_do_candidato(),
@@ -186,7 +217,7 @@ void organizador_de_candidato(Candidato candidato_atual){
 			break;
 		}
 		case 4:
-			candidatos.push_back(candidato_atual);
+			sub_candidatos.push_back(candidato_atual);
 			break;
 		case 5:{
 			Senador senador_atual = Senador(candidato_atual.get_nome_ue(), candidato_atual.get_codigo_do_cargo(), "Senador", candidato_atual.get_numero_do_candidato(),
@@ -207,10 +238,10 @@ void organizador_de_candidato(Candidato candidato_atual){
 			break;
 		}
 		case 9:
-			candidatos.push_back(candidato_atual);
+			sub_candidatos.push_back(candidato_atual);
 			break;
 		case 10:
-			candidatos.push_back(candidato_atual);
+			sub_candidatos.push_back(candidato_atual);
 			break;
 		default:
 			cout << "Cargo inválido\n";
@@ -221,7 +252,8 @@ void organizador_de_candidato(Candidato candidato_atual){
 void organizador_de_sub_candidato(Candidato candidato_atual){
 	switch(candidato_atual.get_codigo_do_cargo()){
 		case 2:{
-			int posicao_presidente = binary_search_presidente(presidente.size(), candidato_atual.get_numero_do_candidato(), presidente);
+			int posicao_presidente = localizador_de_candidato(candidato_atual.get_numero_do_candidato(), 1);
+			cout << posicao_presidente << endl;
 			presidente[posicao_presidente].set_nome_do_vice(candidato_atual.get_nome_do_candidato());
 			presidente[posicao_presidente].set_apelido_do_vice(candidato_atual.get_apelido_do_candidato());
 			presidente[posicao_presidente].set_numero_do_partido_do_vice(candidato_atual.get_numero_do_partido());
@@ -230,7 +262,8 @@ void organizador_de_sub_candidato(Candidato candidato_atual){
 			break;
 		}
 		case 4:{
-			int posicao_governador = binary_search_governador(governador.size(), candidato_atual.get_numero_do_candidato(), governador);
+			int posicao_governador = localizador_de_candidato(candidato_atual.get_numero_do_candidato(), 3);
+			cout <<"governador: " <<  posicao_governador << endl;
 			governador[posicao_governador].set_nome_do_vice(candidato_atual.get_nome_do_candidato());
 			governador[posicao_governador].set_apelido_do_vice(candidato_atual.get_apelido_do_candidato());
 			governador[posicao_governador].set_numero_do_partido_do_vice(candidato_atual.get_numero_do_partido());
@@ -239,13 +272,15 @@ void organizador_de_sub_candidato(Candidato candidato_atual){
 			break;
 		}
 		case 9:{
-			int posicao_senador_1 = binary_search_senador(senador.size(), candidato_atual.get_numero_do_candidato(), senador);
+			int posicao_senador_1 = localizador_de_candidato(candidato_atual.get_numero_do_candidato(), 5);
+			cout << "senador 1: " << posicao_senador_1 << endl;
 			senador[posicao_senador_1].set_nome_do_suplente_1(candidato_atual.get_nome_do_candidato());
 			senador[posicao_senador_1].set_apelido_do_suplente_1(candidato_atual.get_apelido_do_candidato());
 			break;
 		}
 		case 10:{
-			int posicao_senador_2 = binary_search_senador(senador.size(), candidato_atual.get_numero_do_candidato(), senador);
+			int posicao_senador_2 = localizador_de_candidato(candidato_atual.get_numero_do_candidato(), 5);
+			cout << "senador 2: " << posicao_senador_2 << endl;
 			senador[posicao_senador_2].set_nome_do_suplente_2(candidato_atual.get_nome_do_candidato());
 			senador[posicao_senador_2].set_apelido_do_suplente_2(candidato_atual.get_apelido_do_candidato());
 			break;
@@ -896,4 +931,78 @@ int voto_presidente(){
 	}
 
 	return voto;
+}
+
+
+vector<Candidato> leitor_de_arquivo(){
+	ifstream file("/home/iuri/Área de Trabalho/Faculdade/semestre_3/OO/Urna/ep1-master/data/consulta_cand_2018_DF.csv");
+
+    if(!file.is_open())
+    {
+        cout<<"Erro! Não foi possível abrir esse arquivo"<<'\n';
+    }
+
+    string buffer;
+    vector<vector<string> > linhas; //vetor de vetor para toads as linhas
+
+    while(!file.eof())
+    {
+        getline(file, buffer); //ler cada linha
+        stringstream ss(buffer); //colocar a linha lida num stringstream
+
+        vector<string> linha; //iniciar o vetor da linha
+        while (getline(ss, buffer, ';')) { //ler cada coluna
+            linha.push_back(buffer.substr(1, buffer.size() - 2)); //adicionar ao vetor da linha
+        }
+
+        linhas.push_back(linha); 
+    }
+    vector<string> NM_UE,  DS_CARGO, NM_CANDIDATO, NM_URNA_CANDIDATO, SG_PARTIDO, NM_PARTIDO; 
+    vector<int> CD_CARGO, NR_CANDIDATO, NR_PARTIDO;
+    for (size_t i = 1; i < linhas.size(); ++i){
+	    for (size_t j = 0; j < linhas[i].size(); ++j){
+	        //se na primeira linha desta coluna tem SG_PARTIDO
+	    	if (linhas[0][j] == "NM_UE"){ 
+	            NM_UE.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "DS_CARGO"){ 
+	            DS_CARGO.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "NM_CANDIDATO"){ 
+	            NM_CANDIDATO.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "NM_URNA_CANDIDATO"){ 
+	            NM_URNA_CANDIDATO.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "SG_PARTIDO"){ 
+	            SG_PARTIDO.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "NM_PARTIDO"){ 
+	            NM_PARTIDO.push_back(linhas[i][j]);
+	        }
+	        if (linhas[0][j] == "CD_CARGO"){ 
+	            CD_CARGO.push_back(stoi(linhas[i][j]));
+	        }
+	        if (linhas[0][j] == "NR_CANDIDATO"){ 
+	            NR_CANDIDATO.push_back(stoi(linhas[i][j]));
+	        }
+	        if (linhas[0][j] == "NR_PARTIDO"){ 
+	            NR_PARTIDO.push_back(stoi(linhas[i][j]));
+	        }
+	    }
+   	}
+
+   	vector<Candidato> acandidatos;
+
+   	for(int i=0; i<NM_PARTIDO.size(); ++i){
+   		Candidato candidato_analizado = Candidato(NM_UE[i], CD_CARGO[i], DS_CARGO[i], NR_CANDIDATO[i], NM_CANDIDATO[i], NM_URNA_CANDIDATO[i], 
+   			NR_PARTIDO[i], SG_PARTIDO[i], NM_PARTIDO[i]);
+   		acandidatos.push_back(candidato_analizado);
+   	}
+   //	cout << acandidatos.size() << endl;
+  /* 	for(int i=0; i<candidatos.size(); ++i){
+   		cout << candidatos[i].get_apelido_do_candidato() << " " << candidatos[i].get_numero_do_candidato() << endl;
+   	}*/
+
+    return acandidatos;
 }
