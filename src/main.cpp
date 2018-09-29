@@ -815,7 +815,7 @@ int voto_deputado_federal(){
 				bool voto_confirmado = false;
 				if(voto_valido){
 					if(voto >= 0){
-						deputado_distrital[voto].imprime_dados();
+						deputado_federal[voto].imprime_dados();
 					}
 					else if(voto==-1){
 						cout << "Voto nulo\n";
