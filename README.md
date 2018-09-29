@@ -17,6 +17,7 @@ make run
 ```
 
 * Após a execução serão criados dois arquivos na pasta Data:
+```
     dados_dos_eleitores.txt
     candidatos_vencedores.txt
 
