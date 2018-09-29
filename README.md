@@ -17,9 +17,10 @@ make run
 ```
 
 * Após a execução serão criados dois arquivos na pasta Data:
+```sh
+dados_dos_eleitores.txt
+candidatos_vencedores.txt
 ```
-    dados_dos_eleitores.txt
-    candidatos_vencedores.txt
 
 ## Funcionalidades do projeto
 
