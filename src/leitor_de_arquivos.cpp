@@ -5,7 +5,7 @@
 using namespace std;
 
 vector<Candidato> leitor_de_arquivo_DF(){
-	ifstream file("/home/iuri/Área de Trabalho/Faculdade/semestre_3/OO/Urna/ep1-master/data/consulta_cand_2018_DF.csv");
+	ifstream file("data/consulta_cand_2018_DF.csv");
 
     if(!file.is_open())
     {
@@ -81,7 +81,7 @@ vector<Candidato> leitor_de_arquivo_DF(){
 }
 
 vector<Candidato> leitor_de_arquivo_BR(){
-	ifstream file("/home/iuri/Área de Trabalho/Faculdade/semestre_3/OO/Urna/ep1-master/data/consulta_cand_2018_BR.csv");
+	ifstream file("data/consulta_cand_2018_BR.csv");
 
     if(!file.is_open())
     {

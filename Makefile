@@ -31,3 +31,5 @@ run: bin/prog
 clean:
 	rm -rf obj/*
 	rm -rf bin/*
+	rm data/dados_dos_eleitores.txt
+	rm data/candidatos_vencedores.txt

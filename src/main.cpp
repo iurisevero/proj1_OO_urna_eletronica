@@ -112,7 +112,7 @@ int main(){
 
 	imprime_candidatos_vencedores();
 
-	ofstream dados_dos_eleitores("dados_dos_eleitores.txt");
+	ofstream dados_dos_eleitores("data/dados_dos_eleitores.txt");
 	for(int i=0; i<N; ++i){
 		imprime_dados_do_eleitor(eleitores[i], &dados_dos_eleitores);
 	}
@@ -430,8 +430,11 @@ void contador_de_votos(Eleitor eleitor){
 }
 
 void imprime_candidatos_vencedores(){
+	ofstream candidatos_vencedores("data/candidatos_vencedores.txt");
 	cout << "Quantidade de votos brancos: " << quantidade_de_brancos << endl;
-	cout << "Quantidade de votos nulos: " << quantidade_de_nulos << endl;
+	cout << "\nQuantidade de votos nulos: " << quantidade_de_nulos << endl;
+	candidatos_vencedores << "Quantidade de votos brancos: " << quantidade_de_brancos << endl;
+	candidatos_vencedores << "\nQuantidade de votos nulos: " << quantidade_de_nulos << endl;
 	int maior = 0, posicao_maior;
 	for(auto p: votos_para_presidente){
 			if(p.second>maior){
@@ -440,10 +443,12 @@ void imprime_candidatos_vencedores(){
 			}
 	}
 	if(maior > 0){
-		cout << "Presidente com mais votos: " << presidente[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		cout << "\nPresidente com mais votos: " << presidente[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		candidatos_vencedores << "\nPresidente com mais votos: " << presidente[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
 	}
 	else{
 		cout << "Não houveram votos para presidente.\n";
+		candidatos_vencedores << "Não houveram votos para presidente.\n";
 	}
 	maior = 0;
 	for(auto p: votos_para_governador){
@@ -453,10 +458,12 @@ void imprime_candidatos_vencedores(){
 			}
 	}
 	if(maior > 0){
-		cout << "Governador com mais votos: " << governador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		cout << "\nGovernador com mais votos: " << governador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		candidatos_vencedores << "\nGovernador com mais votos: " << governador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
 	}
 	else{
 		cout << "Não houveram votos para governador.\n";
+		candidatos_vencedores << "Não houveram votos para governador.\n";
 	}
 	maior = 0;
 	for(auto p: votos_para_senador){
@@ -466,36 +473,52 @@ void imprime_candidatos_vencedores(){
 			}
 	}
 	if(maior > 0){
-		cout << "Senador com mais votos: " << senador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		cout << "\nSenador com mais votos: " << senador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		candidatos_vencedores << "\nSenador com mais votos: " << senador[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
 	}
 	else{
 		cout << "Não houveram votos para senador.\n";
+		candidatos_vencedores << "Não houveram votos para senador.\n";
 	}
-	maior = 0;;
-	for(auto p: votos_para_deputado_federal){
-			if(p.second>maior){
-				maior = p.second;
-				posicao_maior = p.first;
-			}
+	cout << "\nDeputados Federais com mais votos:\n";
+	candidatos_vencedores << "\nDeputados Federais com mais votos:\n";
+	for(int i=1; i<=5; ++i){
+		maior = 0;
+		for(auto p: votos_para_deputado_federal){
+				if(p.second>maior){
+					maior = p.second;
+					posicao_maior = p.first;
+				}
+		}
+		if(maior > 0){
+			cout << i << ") " << deputado_federal[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+			candidatos_vencedores << i << ") " << deputado_federal[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		}
+		else{
+			cout << "Não houveram votos para deputado federal.\n";
+			candidatos_vencedores << "Não houveram votos para deputado federal.\n";
+		}
+		votos_para_deputado_federal[posicao_maior] = -1;
 	}
-	if(maior > 0){
-		cout << "Deputado Federal com mais votos: " << deputado_federal[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
-	}
-	else{
-		cout << "Não houveram votos para deputado federal.\n";
-	}
-	maior = 0;
-	for(auto p: votos_para_deputado_distrital){
-			if(p.second>maior){
-				maior = p.second;
-				posicao_maior = p.first;
-			}
-	}
-	if(maior > 0){
-		cout << "Deputado Distrital com mais votos: " << deputado_distrital[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
-	}
-	else{
-		cout << "Não houveram votos para deputado distrital.\n";
+	cout << "\nDeputados Distritais com mais votos:\n";
+	candidatos_vencedores << "\nDeputados Distritais com mais votos:\n";
+	for(int i=1; i<=5; ++i){
+		maior = 0;
+		for(auto p: votos_para_deputado_distrital){
+				if(p.second>maior){
+					maior = p.second;
+					posicao_maior = p.first;
+				}
+		}
+		if(maior > 0){
+			cout << i << ") " << deputado_distrital[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+			candidatos_vencedores << i << ") " << deputado_distrital[posicao_maior].get_apelido_do_candidato() << "\nVotos: " << maior << endl;
+		}
+		else{
+			cout << "Não houveram votos para deputado distrital.\n";
+			candidatos_vencedores << "Não houveram votos para deputado distrital.\n";
+		}
+		votos_para_deputado_distrital[posicao_maior] = -1;
 	}
 	maior = 0;
 	for(auto p: votos_para_partido){
@@ -505,11 +528,15 @@ void imprime_candidatos_vencedores(){
 			}
 	}
 	if(maior > 0){
-		cout << "Partido com mais votos: " << partidos[posicao_maior] << "\nVotos: " << maior << endl;
+		cout << "\nPartido com mais votos: " << partidos[posicao_maior] << "\nVotos: " << maior << endl;
+		candidatos_vencedores << "\nPartido com mais votos: " << partidos[posicao_maior] << "\nVotos: " << maior << endl;
 	}
 	else{
 		cout << "Não houveram votos para partido.\n";
+		candidatos_vencedores << "Não houveram votos para partido.\n";
 	}
+
+	candidatos_vencedores.close();
 }
 
 void limpa_buffer(){
