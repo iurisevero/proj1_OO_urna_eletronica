@@ -580,7 +580,7 @@ int voto_deputado_distrital(){
 		retorno = scanf("%d", &voto_branco);
 		if(retorno){
 			if(voto_branco == 1){
-				cout << "Voto em branco.\n";
+				cout << "Voto em branco.\n\n";
 				voto_valido = true;
 				voto = -2;
 				break;
@@ -597,6 +597,30 @@ int voto_deputado_distrital(){
 			 limpa_buffer();
 		}
 	}
+	if(voto_valido){
+		cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+		while(1){
+			int confirmacao, retorno;
+			retorno = scanf("%d", &confirmacao);
+			if(retorno){
+				if(confirmacao == 1){
+					cout << "Voto confirmado.\n\n";
+					break;
+				}
+				else if(confirmacao == 2){
+					voto_valido=false;
+					break;		
+				}
+				else{
+					cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				}
+			}
+			else{
+				cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				limpa_buffer();
+			}
+		}
+	}
 
 	if(!voto_valido){
 		while(1){
@@ -606,13 +630,13 @@ int voto_deputado_distrital(){
 			if(retorno&&((numero_do_candidato<100000&&numero_do_candidato>9999)||(numero_do_candidato<100&&numero_do_candidato>9))){
 				if(numero_do_candidato<100){
 					if(partidos.find(numero_do_candidato)==partidos.end()){
-						cout << "Partido não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+						cout << "Partido não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 						while(1){
 							int voto_nulo;
 							retorno = scanf("%d", &voto_nulo);
 							if(retorno){
 								if(voto_nulo == 1){
-									cout << "Voto anulado.\n";
+
 									voto_valido = true;
 									voto = -1;
 									break;
@@ -638,13 +662,13 @@ int voto_deputado_distrital(){
 				else{
 					int posicao = localizador_de_candidato(numero_do_candidato, 8);
 					if(posicao==-1){
-						cout << "Candidato não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+						cout << "Candidato não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 						while(1){
 							int voto_nulo;
 							retorno = scanf("%d", &voto_nulo);
 							if(retorno){
 								if(voto_nulo == 1){
-									cout << "Voto anulado.\n";
+
 									voto_valido = true;
 									voto = -1;
 									break;
@@ -673,10 +697,10 @@ int voto_deputado_distrital(){
 						deputado_distrital[voto].imprime_dados();
 					}
 					else if(voto==-1){
-						cout << "Voto nulo\n";
+						cout << "Voto nulo\n\n";
 					}
 					else{
-						cout << partidos[-1*voto] << endl;
+						cout << partidos[-1*voto] << endl << endl;
 					}
 					cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
 					while(1){
@@ -704,7 +728,7 @@ int voto_deputado_distrital(){
 				}
 			}
 			else{
-				cout << "Código inválido.\nO código deve conter 5 caracteres numéricos, com valores entre 1 e 9.\n";
+				cout << "Código inválido.\nO código deve conter 5 caracteres numéricos, com valores entre 1 e 9.\n\n";
 				 limpa_buffer();
 			}
 		}
@@ -724,7 +748,7 @@ int voto_deputado_federal(){
 		retorno = scanf("%d", &voto_branco);
 		if(retorno){
 			if(voto_branco == 1){
-				cout << "Voto em branco.\n";
+				cout << "Voto em branco.\n\n";
 				voto_valido = true;
 				voto = -2;
 				break;
@@ -742,6 +766,30 @@ int voto_deputado_federal(){
 			limpa_buffer();
 		}
 	}
+	if(voto_valido){
+		cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+		while(1){
+			int confirmacao, retorno;
+			retorno = scanf("%d", &confirmacao);
+			if(retorno){
+				if(confirmacao == 1){
+					cout << "Voto confirmado.\n\n";
+					break;
+				}
+				else if(confirmacao == 2){
+					voto_valido=false;
+					break;		
+				}
+				else{
+					cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				}
+			}
+			else{
+				cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				limpa_buffer();
+			}
+		}
+	}
 
 	if(!voto_valido){
 		while(1){
@@ -751,13 +799,13 @@ int voto_deputado_federal(){
 			if(retorno&&((numero_do_candidato<10000&&numero_do_candidato>999)||(numero_do_candidato<100&&numero_do_candidato>9))){
 				if(numero_do_candidato<100){
 					if(partidos.find(numero_do_candidato)==partidos.end()){
-						cout << "Partido não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+						cout << "Partido não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 						while(1){
 							int voto_nulo;
 							retorno = scanf("%d", &voto_nulo);
 							if(retorno){
 								if(voto_nulo == 1){
-									cout << "Voto anulado.\n";
+
 									voto_valido = true;
 									voto = -1;
 									break;
@@ -783,13 +831,13 @@ int voto_deputado_federal(){
 				else{
 					int posicao = localizador_de_candidato(numero_do_candidato, 6);
 					if(posicao==-1){
-						cout << "Candidato não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+						cout << "Candidato não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 						while(1){
 							int voto_nulo;
 							retorno = scanf("%d", &voto_nulo);
 							if(retorno){
 								if(voto_nulo == 1){
-									cout << "Voto anulado.\n";
+
 									voto_valido = true;
 									voto = -1;
 									break;
@@ -818,10 +866,10 @@ int voto_deputado_federal(){
 						deputado_federal[voto].imprime_dados();
 					}
 					else if(voto==-1){
-						cout << "Voto nulo\n";
+						cout << "Voto nulo\n\n";
 					}
 					else{
-						cout << partidos[-1*voto] << endl;
+						cout << partidos[-1*voto] << endl << endl;
 					}
 					cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
 					while(1){
@@ -849,7 +897,7 @@ int voto_deputado_federal(){
 				}
 			}
 			else{
-				cout << "Código inválido.\nO código deve conter 4 caracteres numéricos, com valores entre 1 e 9.\n";
+				cout << "Código inválido.\nO código deve conter 4 caracteres numéricos, com valores entre 1 e 9.\n\n";
 				 limpa_buffer();
 			}
 		}
@@ -869,7 +917,7 @@ int voto_senador(int senador_votado, int posicao_senador_1){
 		retorno = scanf("%d", &voto_branco);
 		if(retorno){
 			if(voto_branco == 1){
-				cout << "Voto em branco.\n";
+				cout << "Voto em branco.\n\n";
 				voto_valido = true;
 				voto = -2;
 				break;
@@ -886,6 +934,30 @@ int voto_senador(int senador_votado, int posicao_senador_1){
 			limpa_buffer();
 		}
 	}
+	if(voto_valido){
+		cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+		while(1){
+			int confirmacao, retorno;
+			retorno = scanf("%d", &confirmacao);
+			if(retorno){
+				if(confirmacao == 1){
+					cout << "Voto confirmado.\n\n";
+					break;
+				}
+				else if(confirmacao == 2){
+					voto_valido=false;
+					break;		
+				}
+				else{
+					cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				}
+			}
+			else{
+				cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				limpa_buffer();
+			}
+		}
+	}
 
 	if(!voto_valido){
 		while(1){
@@ -895,13 +967,12 @@ int voto_senador(int senador_votado, int posicao_senador_1){
 			if(retorno&&numero_do_candidato<1000&&numero_do_candidato>99){
 				int posicao = localizador_de_candidato(numero_do_candidato, 5);
 				if(posicao==-1||(posicao==posicao_senador_1&&senador_votado==2)){
-					cout << "Candidato não encontrado/Candidato já selecionado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+					cout << "Candidato não encontrado/Candidato já selecionado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int voto_nulo;
 						retorno = scanf("%d", &voto_nulo);
 						if(retorno){
 							if(voto_nulo == 1){
-								cout << "Voto anulado.\n";
 								voto_valido = true;
 								break;
 							}
@@ -928,7 +999,7 @@ int voto_senador(int senador_votado, int posicao_senador_1){
 						senador[voto].imprime_dados();
 					}
 					else{
-						cout << "Voto nulo\n";
+						cout << "Voto nulo\n\n";
 					}
 					cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
 					while(1){
@@ -956,7 +1027,7 @@ int voto_senador(int senador_votado, int posicao_senador_1){
 				}
 			}
 			else{
-				cout << "Código inválido.\nO código deve conter 3 caracteres numéricos, com valores entre 1 e 9.\n";
+				cout << "Código inválido.\nO código deve conter 3 caracteres numéricos, com valores entre 1 e 9.\n\n";
 				limpa_buffer();
 			}
 		}
@@ -976,7 +1047,7 @@ int voto_governador(){
 		retorno = scanf("%d", &voto_branco);
 		if(retorno){
 			if(voto_branco == 1){
-				cout << "Voto em branco.\n";
+				cout << "Voto em branco.\n\n";
 				voto_valido = true;
 				voto = -2;
 				break;
@@ -993,6 +1064,30 @@ int voto_governador(){
 			limpa_buffer();
 		}
 	}
+	if(voto_valido){
+		cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+		while(1){
+			int confirmacao, retorno;
+			retorno = scanf("%d", &confirmacao);
+			if(retorno){
+				if(confirmacao == 1){
+					cout << "Voto confirmado.\n\n";
+					break;
+				}
+				else if(confirmacao == 2){
+					voto_valido=false;
+					break;		
+				}
+				else{
+					cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				}
+			}
+			else{
+				cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				limpa_buffer();
+			}
+		}
+	}
 
 	if(!voto_valido){
 		while(1){
@@ -1002,13 +1097,12 @@ int voto_governador(){
 			if(retorno&&numero_do_candidato<100&&numero_do_candidato>9){
 				int posicao = localizador_de_candidato(numero_do_candidato, 3);
 				if(posicao==-1){
-					cout << "Candidato não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+					cout << "Candidato não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int voto_nulo;
 						retorno = scanf("%d", &voto_nulo);
 						if(retorno){
 							if(voto_nulo == 1){
-								cout << "Voto anulado.\n";
 								voto_valido = true;
 								break;
 							}
@@ -1035,7 +1129,7 @@ int voto_governador(){
 						governador[voto].imprime_dados();
 					}
 					else{
-						cout << "Voto nulo\n";
+						cout << "Voto nulo\n\n";
 					}
 					cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
 					while(1){
@@ -1063,7 +1157,7 @@ int voto_governador(){
 				}
 			}
 			else{
-				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n";
+				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n\n";
 				limpa_buffer();
 			}
 		}
@@ -1083,7 +1177,7 @@ int voto_presidente(){
 		retorno = scanf("%d", &voto_branco);
 		if(retorno){
 			if(voto_branco == 1){
-				cout << "Voto em branco.\n";
+				cout << "Voto em branco.\n\n";
 				voto_valido = true;
 				voto = -2;
 				break;
@@ -1100,6 +1194,30 @@ int voto_presidente(){
 			limpa_buffer();
 		}
 	}
+	if(voto_valido){
+		cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+		while(1){
+			int confirmacao, retorno;
+			retorno = scanf("%d", &confirmacao);
+			if(retorno){
+				if(confirmacao == 1){
+					cout << "Voto confirmado.\n\n";
+					break;
+				}
+				else if(confirmacao == 2){
+					voto_valido=false;
+					break;		
+				}
+				else{
+					cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				}
+			}
+			else{
+				cout << "Valor inválido, digite novamente!\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
+				limpa_buffer();
+			}
+		}
+	}
 
 	if(!voto_valido){
 		while(1){
@@ -1109,13 +1227,12 @@ int voto_presidente(){
 			if(retorno&&numero_do_candidato<100&&numero_do_candidato>9){
 				int posicao = localizador_de_candidato(numero_do_candidato, 1);
 				if(posicao==-1){
-					cout << "Candidato não encontrado.\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
+					cout << "Candidato não encontrado.\n\nDeseja votar nulo?\n1)Sim\n2)Não\nDigite sua opção: ";
 					while(1){
 						int voto_nulo;
 						retorno = scanf("%d", &voto_nulo);
 						if(retorno){
 							if(voto_nulo == 1){
-								cout << "Voto anulado.\n";
 								voto_valido = true;
 								break;
 							}
@@ -1142,7 +1259,7 @@ int voto_presidente(){
 						presidente[voto].imprime_dados();
 					}
 					else{
-						cout << "Voto nulo\n";
+						cout << "Voto nulo\n\n";
 					}
 					cout << "Deseja confirmar o voto?\n1)Confirmar\n2)Cancelar\nDigite sua opção: ";
 					while(1){
@@ -1170,11 +1287,10 @@ int voto_presidente(){
 				}
 			}
 			else{
-				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n";
+				cout << "Código inválido.\nO código deve conter 2 caracteres numéricos, com valores entre 1 e 9.\n\n";
 				limpa_buffer();
 			}
 		}
 	}
-
 	return voto;
 }
