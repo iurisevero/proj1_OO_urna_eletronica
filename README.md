@@ -24,7 +24,7 @@ candidatos_vencedores.txt
 
 ## Funcionalidades do projeto
 
-Dado um determinado número de eleitores, o projeto armazena o nome e os votos de cada eleitor. Em seguida ele mostra na tela os candidatos com mais votos, o partido com mais voto e também cria dois arquivos, um que armazena os dados da eleição e outro com os dados dos eleitores.
+O projeto consiste em um rascunho de Urna Eleitoral. Dado um determinado número de eleitores, a urna armazena o nome e os votos de cada eleitor. Em seguida ele mostra na tela os candidatos com mais votos, o partido com mais voto e também cria dois arquivos, um que armazena os dados da eleição e outro com os dados dos eleitores.
 
 ## Bugs e problemas
 
