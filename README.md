@@ -32,6 +32,8 @@ Em caso de empate na quantidade de votos, o código elege um "vencedor" de acord
 
 ## Referências
 
-Orientação a Objetos - Introdução, Prof. Renato Coral Sampaio
+Orientação a Objetos - Introdução, Prof. Renato Coral Sampaio 
+
 http://www.tse.jus.br/eleicoes/eleicoes-2018/simulador-de-votacao-na-urna-eletronica
+
 https://pt.stackoverflow.com/questions/328178/contar-quantas-colunas-h%C3%A1-em-um-arquivo-csv-com-c
