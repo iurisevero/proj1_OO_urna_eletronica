@@ -24,6 +24,10 @@ candidatos_vencedores.txt
 
 ## Funcionalidades do projeto
 
+Dado um determinado número de eleitores, o projeto armazena o nome e os votos de cada eleitor. Em seguida ele mostra na tela os candidatos com mais votos, o partido com mais voto e também cria dois arquivos, um que armazena os dados da eleição e outro com os dados dos eleitores.
+
 ## Bugs e problemas
+
+Em caso de empate na quantidade de votos, o código elege um "vencedor" de acordo com a ordem de armazenamento dos mesmos.
 
 ## Referências
