@@ -82,6 +82,7 @@ int main(){
 	}
 
 	int N, retorno;
+	cout << "-----------  ADM  ------------\n";
 	while(1){
 		cout << "Insira o número de eleitores: ";
 		retorno = scanf(" %d", &N);
@@ -94,8 +95,9 @@ int main(){
 		}
 	}
 	limpa_buffer();
+	cout << "\n---------  ELEITOR  ----------\n";
 	for(int i=0; i<N; ++i){
-		cout << "\nInsira seu nome: ";
+		cout << "Insira seu nome: ";
 		string nome;
 		getline(cin, nome);
 		int deputado_federal = voto_deputado_federal();

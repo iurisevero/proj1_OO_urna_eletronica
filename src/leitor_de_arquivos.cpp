@@ -67,8 +67,8 @@ vector<Candidato> leitor_de_arquivo_DF(){
    	}
 
    	vector<Candidato> candidatos;
-
-   	for(int i=0; i<NM_PARTIDO.size(); ++i){
+   	int size = NM_PARTIDO.size();
+   	for(int i=0; i<size; ++i){
    		if(CD_SITUACAO_CANDIDATURA[i]==3){
    			continue;
    		}
@@ -143,8 +143,8 @@ vector<Candidato> leitor_de_arquivo_BR(){
    	}
 
    	vector<Candidato> candidatos;
-
-   	for(int i=0; i<NM_PARTIDO.size(); ++i){
+   	int size = NM_PARTIDO.size();
+   	for(int i=0; i<size; ++i){
    		if(CD_SITUACAO_CANDIDATURA[i]==3){
    			continue;
    		}
