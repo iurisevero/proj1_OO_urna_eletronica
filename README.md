@@ -1,4 +1,4 @@
-https://img.youtube.com/vi/ts2QXqlb368/0.jpg
+(https://img.youtube.com/vi/ts2QXqlb368/0.jpg)
 
 # Exercício de Programação 1
 
