@@ -1,5 +1,3 @@
-![hubble image](https://media.stsci.edu/uploads/image/display_image/4241/low_STScI-H-p1846a_d1280x720.png)
-
 # Exercício de Programação 1
 
 Acesse a descrição completa deste exercício na [wiki](https://gitlab.com/oofga/eps_2018_2/ep1/wikis/Descricao)
