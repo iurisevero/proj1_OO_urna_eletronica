@@ -1,4 +1,4 @@
-[![hubble image](https://media.stsci.edu/uploads/image/display_image/4241/low_STScI-H-p1846a_d1280x720.png)]
+![hubble image](https://media.stsci.edu/uploads/image/display_image/4241/low_STScI-H-p1846a_d1280x720.png)
 
 # Exercício de Programação 1
 
